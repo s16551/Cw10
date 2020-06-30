@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace Cw10.Services
@@ -15,9 +16,11 @@ namespace Cw10.Services
         {
             _context = context;
         }
-        public IActionResult Delete(int id)
+        public void Delete(string index)
         {
-            throw new NotImplementedException();
+            var student = _context.Student.ToList().Find(x => x.IndexNumber == index);
+
+            _context.Student.ToList().Remove(student);
         }
 
         public IEnumerable<Student> GetStudents()
@@ -25,9 +28,12 @@ namespace Cw10.Services
             return _context.Student.ToList();
         }
 
-        public IActionResult Put(int id)
+        public void Put(string index, Student student)
         {
-            throw new NotImplementedException();
+            var studentToUpdate = _context.Student.ToList().Select(x => x.IndexNumber == index);
+
+         
+
         }
     }
 }

@@ -28,10 +28,15 @@ namespace Cw10.Controllers
         }
 
         [HttpPut("{id}")]
-        public void Put(int id)
+        public void Put(string index, [FromBody] Student student)
         {
-            return Ok(_context.Put(id));
+            _context.Put(index, student);
 
+        }
+        [HttpDelete("{id}")]
+        public void Delete(string index)
+        {
+            _context.Delete(index);
         }
             
 

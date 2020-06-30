@@ -11,8 +11,8 @@ namespace Cw10.Services
     {
         public IEnumerable<Student> GetStudents();
 
-        public IActionResult Delete(int id);
+        public void Delete(string index);
 
-        public IActionResult Put(int id);
+        public void Put(string index, Student student);
     }
 }
